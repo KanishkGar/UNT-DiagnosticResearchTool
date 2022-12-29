@@ -38,13 +38,12 @@ export const Home = () => {
                                 return (
                                     (button.type === "text") ? <TextData key={index} data={button} /> : <ImageData key={index} data={button} />
                                 )
-                            })
-                            }
+                            })}
                         </Box>
                     )
                 })}
             </SimpleGrid>
-            <Submit/>
+            <Submit />
         </>
     )
 }
