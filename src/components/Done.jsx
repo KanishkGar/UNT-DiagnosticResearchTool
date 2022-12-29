@@ -1,9 +1,11 @@
-import { Text } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
 
 
 export const Done = () => {
 
     return (<>
-    <Text>Thanks for participating in our research study! You may now leave this tab.</Text>
+        <Box m={5}>
+            <Text>Thanks for participating in our research study! Your responses have been recorded and you may now leave this tab.</Text>
+        </Box>
     </>)
 }
