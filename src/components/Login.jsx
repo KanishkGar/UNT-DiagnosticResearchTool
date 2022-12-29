@@ -1,9 +1,9 @@
 import { Input, Center , Stack, Button} from '@chakra-ui/react'
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { loggedInAtom } from "../atoms";
 
 export const Login = (props) => {
-    const [loggedIn, setLoggedIn] = useRecoilState(loggedInAtom);
+    const setLoggedIn = useSetRecoilState(loggedInAtom);
 
     return (
         <Center width={"100vw"} height={"75vh"}>
