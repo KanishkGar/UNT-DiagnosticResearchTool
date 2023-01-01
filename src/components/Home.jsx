@@ -13,6 +13,34 @@ export const Home = () => {
                 title: "Age",
                 data: "15 years",
                 showing: false
+            },{
+                type: "text",
+                title: "Recent respiratory infection or flu",
+                data: "15 years",
+                showing: false
+            },{
+                type: "text",
+                title: "Age",
+                data: "15 years",
+                showing: false
+            },{
+                type: "text",
+                title: "Age",
+                data: "15 years",
+                showing: false
+            },{
+                type: "text",
+                title: "Age",
+                data: "15 years",
+                showing: false
+            }]
+        },{
+            label: "HISTORY | Past CT Scan",
+            data: [{
+                type: "image",
+                title: "CT Scan Image",
+                data: "https://blog.beekley.com/hubfs/Imported_Blog_Media/opacified.jpg",
+                showing: false
             }]
         },
         {
