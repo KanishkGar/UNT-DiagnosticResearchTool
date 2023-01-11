@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from "@chakra-ui/react"
+import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { ImageData } from "./ImageData"
 import { Label } from "./Label"
@@ -38,7 +38,7 @@ export const Home = () => {
                     });
                 }
                 setQuestions(newQuestions);
-                
+
                 // Get the diagnoses data and put it into the correct format
                 let newDiagnoses = [];
                 for (const [idx, diagnosis] of Object.entries(snapshot.val()["Diagnoses"])) {
@@ -63,6 +63,15 @@ export const Home = () => {
 
     return (
         <>
+            <Heading size='md' mx={5}>Prompt: {complaint}</Heading>
+            <Flex minWidth='max-content' alignItems='center' gap='2' mx={3}>
+                <Box p='2'>
+                    <Heading size='md'>Age: {age}</Heading>
+                    <Heading size='md'>Gender: {gender}</Heading>
+                </Box>
+                <Spacer />
+                <Button colorScheme='teal'>Submit Working Diagnosis</Button>
+            </Flex>
             <SimpleGrid columns={[1, 2, 3]}>
                 {questions.map((el, idx) => {
                     return (
