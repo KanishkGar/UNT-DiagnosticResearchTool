@@ -3,7 +3,7 @@ import { useSetRecoilState } from "recoil"
 import { doneWithStudyAtom } from "../atoms"
 
 export const Submit = () => {
-    const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom)
+    const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
     const sendData = () => {
         // some https call here to send the data to java springboot
         // on succcess, run this:

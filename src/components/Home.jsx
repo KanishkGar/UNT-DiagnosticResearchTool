@@ -4,35 +4,27 @@ import { ImageData } from "./ImageData"
 import { Label } from "./Label"
 import { Submit } from "./Submit"
 import { TextData } from "./TextData"
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { getDatabase, ref, child, get } from "firebase/database";
+import { child, get } from "firebase/database";
+import database from "./Firebase";
+import { ref } from "firebase/database";
 
 
 export const Home = () => {
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyAolu6iMo_ZbJKGatkES5meh4X-uQXCcaQ",
-        authDomain: "drt2-62447.firebaseapp.com",
-        databaseURL: "https://drt2-62447-default-rtdb.firebaseio.com",
-        projectId: "drt2-62447",
-        storageBucket: "drt2-62447.appspot.com",
-        messagingSenderId: "837394038584",
-        appId: "1:837394038584:web:c7358bdc8512ba1d41cbcd"
-    };
     const [questions, setQuestions] = useState([]);
+    const [diagnoses, setDiagnoses] = useState([]);
+    const [age, setAge] = useState("");
+    const [gender, setGender] = useState("");
+    const complaint = "Patient comes to the clinic complaining of headaches";
+
 
     const getCase = (database, complaint, caseNum) => {
         get(child(database, `Complaints/${complaint}`)).then((snapshot) => {
             if (snapshot.exists()) {
-                console.log(snapshot.val()["Cases"][caseNum]["Groups"]);
+                // Get the question data and map it into the correct format
                 let newQuestions = [];
-                for(const [groupName, groupQuestions] of Object.entries(snapshot.val()["Cases"][caseNum]["Groups"])){
+                for (const [groupName, groupQuestions] of Object.entries(snapshot.val()["Cases"][caseNum]["Groups"])) {
                     let groupQuestionsData = [];
-                    for(const [question, answer] of Object.entries(groupQuestions)){
+                    for (const [question, answer] of Object.entries(groupQuestions)) {
                         groupQuestionsData.push({
                             type: "text",
                             title: question,
@@ -43,10 +35,20 @@ export const Home = () => {
                     newQuestions.push({
                         label: groupName,
                         data: groupQuestionsData
-                    })
+                    });
                 }
                 setQuestions(newQuestions);
-                console.log(snapshot.val());
+                
+                // Get the diagnoses data and put it into the correct format
+                let newDiagnoses = [];
+                for (const [idx, diagnosis] of Object.entries(snapshot.val()["Diagnoses"])) {
+                    newDiagnoses.push(diagnosis);
+                }
+                setDiagnoses(newDiagnoses);
+
+                //Get age and gender
+                setAge(snapshot.val()["Cases"][caseNum]["Age"]);
+                setGender(snapshot.val()["Cases"][caseNum]["Gender"]);
             } else {
                 console.log("No data available");
             }
@@ -56,10 +58,7 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        getCase(ref(database), "Patient comes to the clinic complaining of headaches", "1");
+        getCase(ref(database), complaint, "1");
     }, []);
 
     return (

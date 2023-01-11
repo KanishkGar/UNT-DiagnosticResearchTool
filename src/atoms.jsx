@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const loggedInAtom = atom({
     key: 'loggedIn',
-    default: false,
+    default: "",
 })
 
 export const doneWithStudyAtom = atom({
@@ -10,6 +10,15 @@ export const doneWithStudyAtom = atom({
     default: false,
 })
 
+export const clickCounterAtom = atom({
+    key: 'clickCounter',
+    default: 0
+})
+
+export const workingDiagnosisDoneAtom = atom({
+    key: 'workingDiagnosisDone',
+    default: false
+})
 // make some structure for form data
 export const formDataAtom = atom({
     key: 'formData',
