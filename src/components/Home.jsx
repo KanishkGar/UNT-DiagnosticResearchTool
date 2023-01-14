@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button } from "@chakra-ui/react"
+import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button, Container } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { ImageData } from "./ImageData"
 import { Label } from "./Label"
@@ -7,6 +7,8 @@ import { TextData } from "./TextData"
 import { child, get } from "firebase/database";
 import database from "./Firebase";
 import { ref } from "firebase/database";
+import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil"
+import { workingDiagnosisDoneAtom } from "../atoms";
 
 
 export const Home = () => {
@@ -15,6 +17,7 @@ export const Home = () => {
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
     const complaint = "Patient comes to the clinic complaining of headaches";
+    const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
 
 
     const getCase = (database, complaint, caseNum) => {
@@ -63,14 +66,24 @@ export const Home = () => {
 
     return (
         <>
-            <Heading size='md' mx={5}>Prompt: {complaint}</Heading>
+            <Heading size='lg' mx={5} my={5}>
+                Prompt: {complaint} <br />
+                Case 1 of 10
+            </Heading>
+            <Container bg='blue.100' color='blue.600' borderRadius='lg' mx={5} my={0} borderWidth='1px' padding="3" minWidth={"45%"}>
+                <b>Step 1: </b> Ask Questions. Ask until you think you know what the diagnosis might be.<br />
+                <b>Step 2: </b> Lock in your working primary, secondary, and tertiary diagnoses.<br />
+                <b>Step 3: </b> Continue asking questions until you are confident that you know what the diagnosis is.<br />
+                <b>Step 4: </b> Lock in and submit your final primary, secondary, and tertiary diagnosis
+
+            </Container>
             <Flex minWidth='max-content' alignItems='center' gap='2' mx={3}>
                 <Box p='2'>
                     <Heading size='md'>Age: {age}</Heading>
                     <Heading size='md'>Gender: {gender}</Heading>
                 </Box>
                 <Spacer />
-                <Button colorScheme='teal'>Submit Working Diagnosis</Button>
+                <Submit diagnoses={diagnoses} workingOrFinal={workingDiagnosisDone ? "Final" : "Working"} />
             </Flex>
             <SimpleGrid columns={[1, 2, 3]}>
                 {questions.map((el, idx) => {
@@ -86,7 +99,6 @@ export const Home = () => {
                     )
                 })}
             </SimpleGrid>
-            <Submit />
         </>
     )
 }

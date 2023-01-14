@@ -1,4 +1,4 @@
-import { Button, Text } from "@chakra-ui/react"
+import { Button, HStack, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { useRecoilState } from "recoil";
 import { clickCounterAtom, workingDiagnosisDoneAtom } from "../atoms";
@@ -41,7 +41,11 @@ export const TextData = (props) => {
                 </ModalFooter>
             </ModalContent>
         </Modal>
-        <Button mb={2} disabled={show} onClick={onTextClick}>{props.data.title}</Button>
-        {show && <Text backgroundColor={'#f0f0f0'} p={3} borderRadius={10}>{props.data.data}</Text>}
+        <HStack my={2}>
+            <Button disabled={show} onClick={onTextClick}>{props.data.title}</Button>
+            {show && <Text backgroundColor={'#f0f0f0'} p={2} borderRadius={10}>{props.data.data}</Text>}
+        </HStack>
+
+        <div></div>
     </>)
 }
