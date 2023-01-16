@@ -1,7 +1,7 @@
 import { Button, HStack, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { useRecoilState } from "recoil";
-import { clickCounterAtom, workingDiagnosisDoneAtom, clicksDataAtom } from "../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { clickCounterAtom, workingDiagnosisDoneAtom, clicksDataAtom, questionsAtom } from "../atoms";
 import {
     Modal,
     ModalOverlay,
@@ -19,6 +19,9 @@ export const TextData = (props) => {
     const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
     const [clicksData, setClicksData] = useRecoilState(clicksDataAtom);
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const questions = useRecoilValue(questionsAtom)
+
+    
 
     const onTextClick = () => {
         if (clickCounter == 5 && !workingDiagnosisDone) {
@@ -37,7 +40,7 @@ export const TextData = (props) => {
     useEffect(() => {
         setShow(false);
         console.log('here');
-    }, [props.showing]);
+    }, [questions]);
     return (<>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

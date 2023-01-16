@@ -29,3 +29,8 @@ export const workingDiagnosisDataAtom = atom({
     key: 'workingDiagnosisData',
     default: {}
 })
+
+export const questionsAtom = atom({
+    key: 'questionsAtom',
+    default: []
+})

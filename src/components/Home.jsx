@@ -8,11 +8,11 @@ import { child, get } from "firebase/database";
 import database from "./Firebase";
 import { ref, onValue } from "firebase/database";
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil"
-import { workingDiagnosisDoneAtom, caseNumberAtom, loggedInAtom, doneWithStudyAtom } from "../atoms";
+import { workingDiagnosisDoneAtom, caseNumberAtom, loggedInAtom, doneWithStudyAtom, questionsAtom } from "../atoms";
 
 
 export const Home = () => {
-    const [questions, setQuestions] = useState([]);
+    const [questions, setQuestions] = useRecoilState(questionsAtom)
     const [diagnoses, setDiagnoses] = useState([]);
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
