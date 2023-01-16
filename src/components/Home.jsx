@@ -6,9 +6,9 @@ import { Submit } from "./Submit"
 import { TextData } from "./TextData"
 import { child, get } from "firebase/database";
 import database from "./Firebase";
-import { ref } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil"
-import { workingDiagnosisDoneAtom } from "../atoms";
+import { workingDiagnosisDoneAtom, caseNumberAtom, loggedInAtom, doneWithStudyAtom } from "../atoms";
 
 
 export const Home = () => {
@@ -16,12 +16,16 @@ export const Home = () => {
     const [diagnoses, setDiagnoses] = useState([]);
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
+    const [caseNum, setCaseNum] = useState("");
     const complaint = "Patient comes to the clinic complaining of headaches";
     const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
+    const loggedIn = useRecoilValue(loggedInAtom);
+    const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
 
 
-    const getCase = (database, complaint, caseNum) => {
-        get(child(database, `Complaints/${complaint}`)).then((snapshot) => {
+    const getCase = (caseNum) => {
+        console.log(caseNum);
+        get(child(ref(database), `Complaints/${complaint}`)).then((snapshot) => {
             if (snapshot.exists()) {
                 // Get the question data and map it into the correct format
                 let newQuestions = [];
@@ -40,6 +44,7 @@ export const Home = () => {
                         data: groupQuestionsData
                     });
                 }
+                console.log(newQuestions);
                 setQuestions(newQuestions);
 
                 // Get the diagnoses data and put it into the correct format
@@ -61,14 +66,33 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        getCase(ref(database), complaint, "1");
+        const caseNumberRef = child(ref(database), `Tests Taken/${loggedIn}`);
+        onValue(caseNumberRef, (snapshot) => {
+            const savedValues = snapshot.val();
+
+            //check if study completed
+            if("10" in savedValues){
+                setDoneWithStudy(true);
+                return;
+            }
+            //find next case to do
+            for (let i = 1; i <= 10; i++) {
+                if (!(i.toString() in savedValues)) {
+                    setCaseNum(i.toString());
+                    getCase(i.toString());
+                    break;
+                }
+            }
+        }, (errorObject) => {
+            console.log('The read failed: ' + errorObject.name);
+        });
     }, []);
 
     return (
         <>
             <Heading size='lg' mx={5} my={5}>
                 Prompt: {complaint} <br />
-                Case 1 of 10
+                Case {caseNum} of 10
             </Heading>
             <Container bg='blue.100' color='blue.600' borderRadius='lg' mx={5} my={0} borderWidth='1px' padding="3" minWidth={"45%"}>
                 <b>Step 1: </b> Ask Questions. Ask until you think you know what the diagnosis might be.<br />
@@ -83,7 +107,7 @@ export const Home = () => {
                     <Heading size='md'>Gender: {gender}</Heading>
                 </Box>
                 <Spacer />
-                <Submit diagnoses={diagnoses} workingOrFinal={workingDiagnosisDone ? "Final" : "Working"} />
+                <Submit diagnoses={diagnoses} workingOrFinal={workingDiagnosisDone ? "Final" : "Working"} caseNum={caseNum} />
             </Flex>
             <SimpleGrid columns={[1, 2, 3]}>
                 {questions.map((el, idx) => {
@@ -92,7 +116,7 @@ export const Home = () => {
                             <Label title={el.label} />
                             {el.data.map((button, index) => {
                                 return (
-                                    (button.type === "text") ? <TextData key={index} data={button} /> : <ImageData key={index} data={button} />
+                                    (button.type === "text") ? <TextData key={index} data={button}/> : <ImageData key={index} data={button} />
                                 )
                             })}
                         </Box>

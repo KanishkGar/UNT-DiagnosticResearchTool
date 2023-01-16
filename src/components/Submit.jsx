@@ -1,9 +1,10 @@
 import { Box, Button, Container, Divider, Text, HStack, Select, VStack, RadioGroup, Radio, Stack } from "@chakra-ui/react"
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react"
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil"
-import { workingDiagnosisDoneAtom } from "../atoms";
-import { doneWithStudyAtom } from "../atoms"
+import { workingDiagnosisDoneAtom, workingDiagnosisDataAtom, doneWithStudyAtom, loggedInAtom, clicksDataAtom, clickCounterAtom } from "../atoms";
 import { useState } from "react"
+import database from "./Firebase"
+import { ref, update } from "firebase/database"
 import {
     Modal,
     ModalOverlay,
@@ -15,10 +16,13 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 
-export const Submit = ({ diagnoses, workingOrFinal }) => {
+export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
     const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
+    const setClickCounter = useSetRecoilState(clickCounterAtom);
     const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
-    // const workingOrFinal = useRecoilValue(workingOrFinalSelect);
+    const [workingDiagnosisData, setWorkingDiagnosisData] = useRecoilState(workingDiagnosisDataAtom);
+    const loggedInId = useRecoilValue(loggedInAtom);
+    const clicksData = useRecoilValue(clicksDataAtom);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [confidenceValue, setConfidenceValue] = useState('Not At All');
@@ -38,17 +42,35 @@ export const Submit = ({ diagnoses, workingOrFinal }) => {
         //so we have valid data now
 
         //if this was the working diagnosis
-        if(!workingDiagnosisDone){
-            //upload the data for this to firebase
+        if (!workingDiagnosisDone) {
+            //save the data for this in the workingDiagnosisDataAtom
+            setWorkingDiagnosisData({
+                Primary: primaryDiagnosis,
+                Secondary: secondaryDiagnosis,
+                Tertiary: tertiaryDiagnosis,
+                Confidence: confidenceValue
+            });
+            //reset select boxes for next time
             setWorkingDiagnosisDone(true);
             setPrimaryDiagnosis(`Select Primary ${workingOrFinal} Diagnosis`);
             setSecondaryDiagnosis(`Select Secondary ${workingOrFinal} Diagnosis`);
             setTertiaryDiagnosis(`Select Tertiary ${workingOrFinal} Diagnosis`)
-        }else{
-            //upload the data for this to firebase
-            //increment the case number
-            //if the current case number is 10, we need to update everything
-            setDoneWithStudy(true);
+        } else {
+            //upload the data for this to firebase, set it to the current caseNumber
+            update(ref(database, `Tests Taken/${loggedInId}/${caseNum}`), {
+                Clicks: clicksData,
+                WorkingDiagnosis: workingDiagnosisData,
+                FinalDiagnosis: {
+                    Primary: primaryDiagnosis,
+                    Secondary: secondaryDiagnosis,
+                    Tertiary: tertiaryDiagnosis,
+                    Confidence: confidenceValue
+                }
+            });
+            //reset any variables
+            setWorkingDiagnosisDone(false);
+            setClickCounter(0);
+            // setDoneWithStudy(true);
         }
         // on succcess, run this:
         onClose();

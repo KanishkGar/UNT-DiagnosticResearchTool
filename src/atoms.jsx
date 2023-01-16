@@ -19,14 +19,13 @@ export const workingDiagnosisDoneAtom = atom({
     key: 'workingDiagnosisDone',
     default: false
 })
-// make some structure for form data
-export const formDataAtom = atom({
-    key: 'formData',
+
+export const clicksDataAtom = atom({
+    key: 'clicksData',
     default: {}
 })
 
-// make some structure for case data
-export const caseDataAtom = atom({
-    key: 'caseData',
+export const workingDiagnosisDataAtom = atom({
+    key: 'workingDiagnosisData',
     default: {}
 })
