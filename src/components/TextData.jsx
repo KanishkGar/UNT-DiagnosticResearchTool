@@ -34,12 +34,12 @@ export const TextData = (props) => {
             [curTimeMs]: props.data.title
         }));
         setShow(true);
-        console.log("here 2");
+        // console.log("here 2");
         setClickCounter(clickCounter + 1);
     }
     useEffect(() => {
         setShow(false);
-        console.log('here');
+        // console.log('here');
     }, [questions]);
     return (<>
         <Modal isOpen={isOpen} onClose={onClose}>

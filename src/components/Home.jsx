@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button, Container } from "@chakra-ui/react"
+import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button, Container, HStack, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { ImageData } from "./ImageData"
 import { Label } from "./Label"
@@ -24,7 +24,7 @@ export const Home = () => {
 
 
     const getCase = (caseNum) => {
-        console.log(caseNum);
+        // console.log(caseNum);
         get(child(ref(database), `Complaints/${complaint}`)).then((snapshot) => {
             if (snapshot.exists()) {
                 // Get the question data and map it into the correct format
@@ -44,7 +44,7 @@ export const Home = () => {
                         data: groupQuestionsData
                     });
                 }
-                console.log(newQuestions);
+                // console.log(newQuestions);
                 setQuestions(newQuestions);
 
                 // Get the diagnoses data and put it into the correct format
@@ -88,6 +88,24 @@ export const Home = () => {
         });
     }, []);
 
+    const group = (labelName) => {
+        let idx = 0;
+        for(let i = 0; i < questions.length; i++){
+            if(questions[i].label === labelName)
+                idx = i;
+        }
+        return (
+            <Box mx={5} key={idx}>
+                <Label title={questions[idx].label} />
+                {questions[idx].data.map((button, index) => {
+                    return (
+                        (button.type === "text") ? <TextData key={index} data={button}/> : <ImageData key={index} data={button} />
+                    )
+                })}
+            </Box>
+        )
+    }
+
     return (
         <>
             <Heading size='lg' mx={5} my={5}>
@@ -109,6 +127,20 @@ export const Home = () => {
                 <Spacer />
                 <Submit diagnoses={diagnoses} workingOrFinal={workingDiagnosisDone ? "Final" : "Working"} caseNum={caseNum} />
             </Flex>
+            {/* <HStack>
+                <VStack>
+                    {group("Associated Findings")}
+                    {group("Imaging")}
+                </VStack>
+                <VStack>
+                    {group("Codiers")}
+                    {group("Labs")}
+                </VStack>
+                <VStack>
+                    {group("History (PMH\\PSH\\Hosp)")}
+                    {group("Physical Exam")}
+                </VStack>
+            </HStack> */}
             <SimpleGrid columns={[1, 2, 3]}>
                 {questions.map((el, idx) => {
                     return (
