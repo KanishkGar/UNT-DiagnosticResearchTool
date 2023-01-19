@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button, Container, HStack, VStack } from "@chakra-ui/react"
+import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button, Container, HStack, VStack, Grid } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { ImageData } from "./ImageData"
 import { Label } from "./Label"
@@ -71,7 +71,7 @@ export const Home = () => {
             const savedValues = snapshot.val();
 
             //check if study completed
-            if("10" in savedValues){
+            if ("10" in savedValues) {
                 setDoneWithStudy(true);
                 return;
             }
@@ -89,17 +89,19 @@ export const Home = () => {
     }, []);
 
     const group = (labelName) => {
+        if(questions.length == 0)
+            return (<></>);
         let idx = 0;
-        for(let i = 0; i < questions.length; i++){
-            if(questions[i].label === labelName)
+        for (let i = 0; i < questions.length; i++) {
+            if (questions[i].label === labelName)
                 idx = i;
         }
         return (
-            <Box mx={5} key={idx}>
+            <Box mx={5} key={idx} w='100%'>
                 <Label title={questions[idx].label} />
                 {questions[idx].data.map((button, index) => {
                     return (
-                        (button.type === "text") ? <TextData key={index} data={button}/> : <ImageData key={index} data={button} />
+                        (button.type === "text") ? <TextData key={index} data={button} /> : <ImageData key={index} data={button} />
                     )
                 })}
             </Box>
@@ -127,8 +129,8 @@ export const Home = () => {
                 <Spacer />
                 <Submit diagnoses={diagnoses} workingOrFinal={workingDiagnosisDone ? "Final" : "Working"} caseNum={caseNum} />
             </Flex>
-            {/* <HStack>
-                <VStack>
+            <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+                <VStack mx={5}>
                     {group("Associated Findings")}
                     {group("Imaging")}
                 </VStack>
@@ -140,21 +142,7 @@ export const Home = () => {
                     {group("History (PMH\\PSH\\Hosp)")}
                     {group("Physical Exam")}
                 </VStack>
-            </HStack> */}
-            <SimpleGrid columns={[1, 2, 3]}>
-                {questions.map((el, idx) => {
-                    return (
-                        <Box mx={5} key={idx}>
-                            <Label title={el.label} />
-                            {el.data.map((button, index) => {
-                                return (
-                                    (button.type === "text") ? <TextData key={index} data={button}/> : <ImageData key={index} data={button} />
-                                )
-                            })}
-                        </Box>
-                    )
-                })}
-            </SimpleGrid>
+            </Grid>
         </>
     )
 }
