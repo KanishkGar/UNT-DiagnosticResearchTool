@@ -1,24 +1,24 @@
-import { Box, SimpleGrid, Flex, Heading, Spacer, ButtonGroup, Button, Container, HStack, VStack, Grid } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import { ImageData } from "./ImageData"
-import { Label } from "./Label"
-import { Submit } from "./Submit"
-import { TextData } from "./TextData"
+import { Box, Flex, Heading, Spacer, Container, VStack, Grid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { ImageData } from "./ImageData";
+import { Label } from "./Label";
+import { Submit } from "./Submit";
+import { TextData } from "./TextData";
 import { child, get } from "firebase/database";
 import database from "./Firebase";
 import { ref, onValue } from "firebase/database";
-import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil"
-import { workingDiagnosisDoneAtom, caseNumberAtom, loggedInAtom, doneWithStudyAtom, questionsAtom } from "../atoms";
+import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
+import { workingDiagnosisDoneAtom, loggedInAtom, doneWithStudyAtom, questionsAtom } from "../atoms";
 
 
 export const Home = () => {
-    const [questions, setQuestions] = useRecoilState(questionsAtom)
+    const [questions, setQuestions] = useRecoilState(questionsAtom);
     const [diagnoses, setDiagnoses] = useState([]);
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
     const [caseNum, setCaseNum] = useState("");
     const complaint = "Patient comes to the clinic complaining of headaches";
-    const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
+    const workingDiagnosisDone = useRecoilValue(workingDiagnosisDoneAtom);
     const loggedIn = useRecoilValue(loggedInAtom);
     const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
 
@@ -66,6 +66,9 @@ export const Home = () => {
     }
 
     useEffect(() => {
+        // prevent unload
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
         const caseNumberRef = child(ref(database), `Tests Taken/${loggedIn}`);
         onValue(caseNumberRef, (snapshot) => {
             const savedValues = snapshot.val();
@@ -88,8 +91,13 @@ export const Home = () => {
         });
     }, []);
 
+    const handleBeforeUnload = (event) => {
+        event.preventDefault();
+        event.returnValue = "";
+    };
+
     const group = (labelName) => {
-        if(questions.length == 0)
+        if (questions.length === 0)
             return (<></>);
         let idx = 0;
         for (let i = 0; i < questions.length; i++) {

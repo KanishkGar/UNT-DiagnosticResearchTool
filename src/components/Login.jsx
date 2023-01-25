@@ -1,6 +1,6 @@
-import { Input, Center, Stack, Button } from '@chakra-ui/react'
+import { Input, Center, Stack, Button } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { loggedInAtom } from "../atoms";
 import database from "./Firebase";
 import { ref, child, get} from "firebase/database";
@@ -15,6 +15,7 @@ export const Login = (props) => {
             if (snapshot.exists()) {
                 setLoggedIn(value);
             } else {
+                alert("Login Failed. Please enter a valid login.");
                 console.log("Login Failed");
             }
         }).catch((error) => {
@@ -22,7 +23,6 @@ export const Login = (props) => {
             console.error(error);
         });
     }
-    // const 
     return (
         <Center width={"100vw"} height={"75vh"}>
             <Stack spacing={4} align='center'>

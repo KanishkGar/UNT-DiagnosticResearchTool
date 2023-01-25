@@ -1,7 +1,7 @@
 import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { doneWithStudyAtom, loggedInAtom, dataRefAtom } from "./atoms";
+import { useRecoilValue } from "recoil";
+import { doneWithStudyAtom, loggedInAtom } from "./atoms";
 import { Done } from "./components/Done";
 import { Home } from "./components/Home";
 import { Header } from "./components/Header";

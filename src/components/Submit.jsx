@@ -1,10 +1,10 @@
-import { Box, Button, Container, Divider, Text, HStack, Select, VStack, RadioGroup, Radio, Stack } from "@chakra-ui/react"
-import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react"
-import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil"
-import { workingDiagnosisDoneAtom, workingDiagnosisDataAtom, doneWithStudyAtom, loggedInAtom, clicksDataAtom, clickCounterAtom } from "../atoms";
-import { useState } from "react"
-import database from "./Firebase"
-import { ref, update } from "firebase/database"
+import { Button, Container, Divider, Text, Select, VStack, RadioGroup, Radio, Stack } from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
+import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
+import { workingDiagnosisDoneAtom, workingDiagnosisDataAtom, loggedInAtom, clicksDataAtom, clickCounterAtom } from "../atoms";
+import { useState } from "react";
+import database from "./Firebase";
+import { ref, update } from "firebase/database";
 import {
     Modal,
     ModalOverlay,
@@ -14,10 +14,9 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
-    const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
     const setClickCounter = useSetRecoilState(clickCounterAtom);
     const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
     const [workingDiagnosisData, setWorkingDiagnosisData] = useRecoilState(workingDiagnosisDataAtom);
@@ -37,6 +36,7 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
             || secondaryDiagnosis.startsWith('Select Secondary') //== `Select Secondary ${workingOrFinal} Diagnosis`
             || tertiaryDiagnosis.startsWith('Select Tertiary')) {// == `Select Tertiary ${workingOrFinal} Diagnosis`
             //some sort of popup saying select all 3 bozo
+            alert('Please select all three diagnoses');
             return;
         }
         //so we have valid data now
@@ -52,9 +52,6 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
             });
             //reset select boxes for next time
             setWorkingDiagnosisDone(true);
-            setPrimaryDiagnosis(`Select Primary ${workingOrFinal} Diagnosis`);
-            setSecondaryDiagnosis(`Select Secondary ${workingOrFinal} Diagnosis`);
-            setTertiaryDiagnosis(`Select Tertiary ${workingOrFinal} Diagnosis`)
         } else {
             //upload the data for this to firebase, set it to the current caseNumber
             update(ref(database, `Tests Taken/${loggedInId}/${caseNum}`), {
@@ -69,6 +66,9 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
             });
             //reset any variables
             setWorkingDiagnosisDone(false);
+            setPrimaryDiagnosis(`Select Primary ${workingOrFinal} Diagnosis`);
+            setSecondaryDiagnosis(`Select Secondary ${workingOrFinal} Diagnosis`);
+            setTertiaryDiagnosis(`Select Tertiary ${workingOrFinal} Diagnosis`)
             setClickCounter(0);
             // setDoneWithStudy(true);
         }
