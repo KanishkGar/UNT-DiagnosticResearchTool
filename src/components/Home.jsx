@@ -17,7 +17,7 @@ export const Home = () => {
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
     const [caseNum, setCaseNum] = useState("");
-    const complaint = "Patient comes to the clinic complaining of headaches";
+    const [complaint, setComplaint] = useState("");
     const workingDiagnosisDone = useRecoilValue(workingDiagnosisDoneAtom);
     const loggedIn = useRecoilValue(loggedInAtom);
     const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
@@ -66,6 +66,19 @@ export const Home = () => {
     }
 
     useEffect(() => {
+        if(complaint === ""){
+            const complaintRef = child(ref(database), `Tests Taken/${loggedIn}`);
+            get(complaintRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log(snapshot.val()["0"]);
+                    setComplaint(snapshot.val()["0"]);
+                } else {
+                    console.log("No data available");
+                }
+              }).catch((error) => {
+                    console.error(error);
+              });
+        }
         // prevent unload
         window.addEventListener("beforeunload", handleBeforeUnload);
 
@@ -89,7 +102,7 @@ export const Home = () => {
         }, (errorObject) => {
             console.log('The read failed: ' + errorObject.name);
         });
-    }, []);
+    }, [complaint]);
 
     const handleBeforeUnload = (event) => {
         event.preventDefault();
