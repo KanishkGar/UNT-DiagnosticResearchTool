@@ -31,12 +31,17 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
 
     const submit = () => {
         // if any of the three diagnoses have not been selected
-        // console.log(primaryDiagnosis);
+        console.log([primaryDiagnosis, secondaryDiagnosis, tertiaryDiagnosis]);
         if (primaryDiagnosis.startsWith('Select Primary') //== `Select Primary ${workingOrFinal} Diagnosis`
             || secondaryDiagnosis.startsWith('Select Secondary') //== `Select Secondary ${workingOrFinal} Diagnosis`
             || tertiaryDiagnosis.startsWith('Select Tertiary')) {// == `Select Tertiary ${workingOrFinal} Diagnosis`
             //some sort of popup saying select all 3 bozo
             alert('Please select all three diagnoses');
+            return;
+        }
+        // if any of the three diagnoses are the same
+        if((new Set([primaryDiagnosis, secondaryDiagnosis, tertiaryDiagnosis])).size !== 3) {
+            alert('Please select three different diagnoses');
             return;
         }
         //so we have valid data now
@@ -48,7 +53,8 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
                 Primary: primaryDiagnosis,
                 Secondary: secondaryDiagnosis,
                 Tertiary: tertiaryDiagnosis,
-                Confidence: confidenceValue
+                Confidence: confidenceValue,
+                Timestamp: Date.now().toString()
             });
             //reset select boxes for next time
             setWorkingDiagnosisDone(true);
@@ -61,14 +67,16 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
                     Primary: primaryDiagnosis,
                     Secondary: secondaryDiagnosis,
                     Tertiary: tertiaryDiagnosis,
-                    Confidence: confidenceValue
+                    Confidence: confidenceValue,
+                    Timestamp: Date.now().toString()
                 }
             });
             //reset any variables
             setWorkingDiagnosisDone(false);
             setPrimaryDiagnosis(`Select Primary ${workingOrFinal} Diagnosis`);
             setSecondaryDiagnosis(`Select Secondary ${workingOrFinal} Diagnosis`);
-            setTertiaryDiagnosis(`Select Tertiary ${workingOrFinal} Diagnosis`)
+            setTertiaryDiagnosis(`Select Tertiary ${workingOrFinal} Diagnosis`);
+            setConfidenceValue('Not At All');
             setClickCounter(0);
             // setDoneWithStudy(true);
         }
