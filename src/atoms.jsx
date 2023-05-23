@@ -34,3 +34,8 @@ export const questionsAtom = atom({
     key: 'questionsAtom',
     default: []
 })
+
+export const caseStartTimeAtom = atom({
+    key: 'caseStartTime',
+    default: Date.now().toString()
+})

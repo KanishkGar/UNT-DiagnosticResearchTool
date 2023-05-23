@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Spacer, Container, VStack, Grid } from "@chakra-ui/react";
+import { Box, Flex, Heading, Spacer, Container, VStack, Grid, Center } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ImageData } from "./ImageData";
 import { Label } from "./Label";
@@ -8,7 +8,7 @@ import { child, get } from "firebase/database";
 import database from "./Firebase";
 import { ref, onValue } from "firebase/database";
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
-import { workingDiagnosisDoneAtom, loggedInAtom, doneWithStudyAtom, questionsAtom } from "../atoms";
+import { workingDiagnosisDoneAtom, loggedInAtom, doneWithStudyAtom, questionsAtom, caseStartTimeAtom } from "../atoms";
 
 
 export const Home = () => {
@@ -18,13 +18,16 @@ export const Home = () => {
     const [gender, setGender] = useState("");
     const [caseNum, setCaseNum] = useState("");
     const [complaint, setComplaint] = useState("");
+    const [caseStartTime, setCaseStartTime] = useRecoilState(caseStartTimeAtom);
     const workingDiagnosisDone = useRecoilValue(workingDiagnosisDoneAtom);
     const loggedIn = useRecoilValue(loggedInAtom);
     const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
+    const numCases = 2;
 
 
     const getCase = (caseNum) => {
         // console.log(caseNum);
+        setCaseStartTime(Date.now().toString());
         get(child(ref(database), `Complaints/${complaint}`)).then((snapshot) => {
             if (snapshot.exists()) {
                 // Get the question data and map it into the correct format
@@ -66,7 +69,7 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        if(complaint === ""){
+        if (complaint === "") {
             const complaintRef = child(ref(database), `Tests Taken/${loggedIn}`);
             get(complaintRef).then((snapshot) => {
                 if (snapshot.exists()) {
@@ -75,9 +78,9 @@ export const Home = () => {
                 } else {
                     console.log("No data available");
                 }
-              }).catch((error) => {
-                    console.error(error);
-              });
+            }).catch((error) => {
+                console.error(error);
+            });
         }
         // prevent unload
         window.addEventListener("beforeunload", handleBeforeUnload);
@@ -86,13 +89,13 @@ export const Home = () => {
         onValue(caseNumberRef, (snapshot) => {
             const savedValues = snapshot.val();
 
-            //check if study completed
-            if ("10" in savedValues) {
+            //check if study completed numCases
+            if ("2" in savedValues) {
                 setDoneWithStudy(true);
                 return;
             }
             //find next case to do
-            for (let i = 1; i <= 10; i++) {
+            for (let i = 1; i <= numCases; i++) {
                 if (!(i.toString() in savedValues)) {
                     setCaseNum(i.toString());
                     getCase(i.toString());
@@ -133,7 +136,7 @@ export const Home = () => {
         <>
             <Heading size='lg' mx={5} my={5}>
                 Prompt: {complaint} <br />
-                Case {caseNum} of 10
+                Case {caseNum} of {numCases}
             </Heading>
             <Container bg='blue.100' color='blue.600' borderRadius='lg' mx={5} my={0} borderWidth='1px' padding="3" minWidth={"45%"}>
                 <b>Step 1: </b> Ask Questions. Ask until you think you know what the diagnosis might be.<br />
@@ -150,18 +153,40 @@ export const Home = () => {
                 <Spacer />
                 <Submit diagnoses={diagnoses} workingOrFinal={workingDiagnosisDone ? "Final" : "Working"} caseNum={caseNum} />
             </Flex>
+            {/*add a header here*/}
+            <Center>
+                <Heading size='lg' mx={5} my={5}>
+                    History
+                </Heading>
+            </Center>
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>
                 <VStack mx={5}>
+                    {group("Timing\\Onset")}
+                    {group("Past Medical History")}
+                </VStack>
+                <VStack>
+                    {group("Quality")}
                     {group("Associated Findings")}
-                    {group("Imaging")}
                 </VStack>
                 <VStack>
-                    {group("Codiers")}
-                    {group("Labs")}
+                    {group("Location")}
+                </VStack>
+            </Grid>
+            <Center>
+                <Heading size='lg' mx={5} my={5}>
+                    Physical Examination
+                </Heading>
+            </Center>
+            <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+                <VStack mx={5}>
+                    {group("General")}
+                    {group("Vital Signs")}
                 </VStack>
                 <VStack>
-                    {group("History (PMH\\PSH\\Hosp)")}
-                    {group("Physical Exam")}
+                    {group("Lungs and Thorax")}
+                </VStack>
+                <VStack>
+                    {group("Cardiovascular")}
                 </VStack>
             </Grid>
         </>

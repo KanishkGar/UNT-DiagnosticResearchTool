@@ -57,7 +57,7 @@ export const TextData = (props) => {
         </Modal>
         <HStack my={2}>
             <Button disabled={show} onClick={onTextClick}>{props.data.title}</Button>
-            {show && <Text backgroundColor={'#f0f0f0'} p={2} borderRadius={10}>{props.data.data}</Text>}
+            {show && <Text backgroundColor={props.data.data == "Yes" ? '#00FF00' : "#FF0000"} p={2} borderRadius={10}>{props.data.data}</Text>}
         </HStack>
 
         <div></div>

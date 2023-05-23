@@ -1,7 +1,7 @@
 import { Button, Container, Divider, Text, Select, VStack, RadioGroup, Radio, Stack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
-import { workingDiagnosisDoneAtom, workingDiagnosisDataAtom, loggedInAtom, clicksDataAtom, clickCounterAtom } from "../atoms";
+import { workingDiagnosisDoneAtom, workingDiagnosisDataAtom, loggedInAtom, clicksDataAtom, clickCounterAtom, caseStartTimeAtom } from "../atoms";
 import { useState } from "react";
 import database from "./Firebase";
 import { ref, update } from "firebase/database";
@@ -17,11 +17,12 @@ import {
 } from '@chakra-ui/react';
 
 export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
-    const setClickCounter = useSetRecoilState(clickCounterAtom);
+    const [clickCounter, setClickCounter] = useRecoilState(clickCounterAtom);
     const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
     const [workingDiagnosisData, setWorkingDiagnosisData] = useRecoilState(workingDiagnosisDataAtom);
     const loggedInId = useRecoilValue(loggedInAtom);
     const clicksData = useRecoilValue(clicksDataAtom);
+    const [caseStartTime, setCaseStartTime] = useRecoilState(caseStartTimeAtom);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [confidenceValue, setConfidenceValue] = useState('Not At All');
@@ -69,7 +70,8 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
                     Tertiary: tertiaryDiagnosis,
                     Confidence: confidenceValue,
                     Timestamp: Date.now().toString()
-                }
+                },
+                CaseStartTime: caseStartTime
             });
             //reset any variables
             setWorkingDiagnosisDone(false);
@@ -85,7 +87,7 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
     }
 
     return (<>
-        <Button onClick={onOpen} my={3} colorScheme='teal'>Submit {workingOrFinal} Diagnosis</Button>
+        <Button onClick={onOpen} my={3} colorScheme='teal' disabled={workingOrFinal == 'Working' && clickCounter < 5}>Submit {workingOrFinal} Diagnosis</Button>
 
         <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
