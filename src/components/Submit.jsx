@@ -1,6 +1,6 @@
 import { Button, Container, Divider, Text, Select, VStack, RadioGroup, Radio, Stack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { workingDiagnosisDoneAtom, workingDiagnosisDataAtom, loggedInAtom, clicksDataAtom, clickCounterAtom, caseStartTimeAtom } from "../atoms";
 import { useState } from "react";
 import database from "./Firebase";
@@ -22,7 +22,7 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
     const [workingDiagnosisData, setWorkingDiagnosisData] = useRecoilState(workingDiagnosisDataAtom);
     const loggedInId = useRecoilValue(loggedInAtom);
     const clicksData = useRecoilValue(clicksDataAtom);
-    const [caseStartTime, setCaseStartTime] = useRecoilState(caseStartTimeAtom);
+    const caseStartTime = useRecoilValue(caseStartTimeAtom);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [confidenceValue, setConfidenceValue] = useState('Not At All');
@@ -32,7 +32,7 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
 
     const submit = () => {
         // if any of the three diagnoses have not been selected
-        console.log([primaryDiagnosis, secondaryDiagnosis, tertiaryDiagnosis]);
+        // console.log([primaryDiagnosis, secondaryDiagnosis, tertiaryDiagnosis]);
         if (primaryDiagnosis.startsWith('Select Primary') //== `Select Primary ${workingOrFinal} Diagnosis`
             || secondaryDiagnosis.startsWith('Select Secondary') //== `Select Secondary ${workingOrFinal} Diagnosis`
             || tertiaryDiagnosis.startsWith('Select Tertiary')) {// == `Select Tertiary ${workingOrFinal} Diagnosis`
@@ -87,7 +87,7 @@ export const Submit = ({ diagnoses, workingOrFinal, caseNum }) => {
     }
 
     return (<>
-        <Button onClick={onOpen} my={3} colorScheme='teal' disabled={workingOrFinal == 'Working' && clickCounter < 5}>Submit {workingOrFinal} Diagnosis</Button>
+        <Button onClick={onOpen} my={3} colorScheme='teal' disabled={workingOrFinal === 'Working' && clickCounter < 5}>Submit {workingOrFinal} Diagnosis</Button>
 
         <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />

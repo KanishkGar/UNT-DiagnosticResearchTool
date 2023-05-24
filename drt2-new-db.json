@@ -1,0 +1,674 @@
+{
+  "Complaints": {
+    "Patient comes to the clinic complaining of chest pain": {
+      "Cases": [
+        null,
+        {
+          "Age": "Age > 40",
+          "Gender": "Male",
+          "Groups": {
+            "Associated Findings": {
+              "Chest pain altered by exertion": "No",
+              "Chest pain altered by food": "No",
+              "Diaphoresis": "Yes",
+              "Dysphagia": "No",
+              "Gradual dyspnea": "Yes",
+              "Patient reports pain occurs with specific movement\\posture": "No",
+              "Preceding trauma": "No",
+              "Prodromal flue-like signs\\symptoms, excluding fever": "No",
+              "Recent immobility": "No",
+              "Sudden dyspnea": "No"
+            },
+            "Cardiovascular": {
+              "Accentuated pulmonic second sound": "No",
+              "Aortic regurgitant murmur": "No",
+              "Deep vein thrombosis": "No",
+              "Neck vein distention": "Yes",
+              "Precordial friction rubs": "No",
+              "S3\\S4 gallops": "Yes"
+            },
+            "General": {
+              "Cyanosis": "No",
+              "Skin cool\\pale\\moist": "Yes"
+            },
+            "Location": {
+              "Location of chest pain at sternochondral or costochondral junction": "No",
+              "Location of chest pain lateral to costochondral junction": "No",
+              "Location of chest pain posterior thoracic": "No",
+              "Location of chest pain substernal and\\or left precordial": "Yes",
+              "Radiation of chest pain to back": "No",
+              "Radiation of chest pain to neck\\jaw\\arm": "No"
+            },
+            "Lungs and Thorax": {
+              "Evidence of soft tissue trauma": "No",
+              "Hemoptysis": "No",
+              "Patient reproduced pain with specific movement during exam": "No",
+              "Physicians' palpation reproduced point tenderness": "No",
+              "Productive cough": "No",
+              "Rales": "Yes",
+              "Ronchi": "No",
+              "Subxiphoid\\epigastric tenderness": "No",
+              "Unilateral decreased breath sounds": "No",
+              "Unilateral hyperresonance": "No",
+              "Wheezes": "Yes"
+            },
+            "Past Medical History": {
+              "Hypertension": "No"
+            },
+            "Quality": {
+              "Chest pain burning": "No",
+              "Chest pain dull\\pressure\\squeezing": "Yes",
+              "Chest pain sharp\\stabbing": "No"
+            },
+            "Timing\\Onset": {
+              "Chest pain lasting 1-3 hours": "Yes",
+              "Chest pain lasting a few seconds": "No",
+              "Chest pain lasting greater than 24 hours": "No",
+              "Chest pain lasting less than 20-30 minutes": "No",
+              "Sudden onset of pain?": "Yes"
+            },
+            "Vital Signs": {
+              "Fever": "No",
+              "Tachycardia": "Yes",
+              "Tachypnea": "Yes"
+            }
+          }
+        },
+        {
+          "Age": "Age > 40",
+          "Gender": "Male",
+          "Groups": {
+            "Associated Findings": {
+              "Chest pain altered by exertion": "No",
+              "Chest pain altered by food": "No",
+              "Diaphoresis": "Yes",
+              "Dysphagia": "No",
+              "Gradual dyspnea": "No",
+              "Patient reports pain occurs with specific movement\\posture": "No",
+              "Preceding trauma": "No",
+              "Prodromal flue-like signs\\symptoms, excluding fever": "No",
+              "Recent immobility": "Yes",
+              "Sudden dyspnea": "Yes"
+            },
+            "Cardiovascular": {
+              "Accentuated pulmonic second sound": "No",
+              "Aortic regurgitant murmur": "No",
+              "Deep vein thrombosis": "Yes",
+              "Neck vein distention": "No",
+              "Precordial friction rubs": "No",
+              "S3\\S4 gallops": "No"
+            },
+            "General": {
+              "Cyanosis": "Yes",
+              "Skin cool\\pale\\moist": "Yes"
+            },
+            "Location": {
+              "Location of chest pain at sternochondral or costochondral junction": "No",
+              "Location of chest pain lateral to costochondral junction": "Yes",
+              "Location of chest pain posterior thoracic": "No",
+              "Location of chest pain substernal and\\or left precordial": "No",
+              "Radiation of chest pain to back": "No",
+              "Radiation of chest pain to neck\\jaw\\arm": "No"
+            },
+            "Lungs and Thorax": {
+              "Evidence of soft tissue trauma": "No",
+              "Hemoptysis": "No",
+              "Patient reproduced pain with specific movement during exam": "No",
+              "Physicians' palpation reproduced point tenderness": "No",
+              "Productive cough": "No",
+              "Rales": "No",
+              "Ronchi": "No",
+              "Subxiphoid\\epigastric tenderness": "No",
+              "Unilateral decreased breath sounds": "No",
+              "Unilateral hyperresonance": "No",
+              "Wheezes": "No"
+            },
+            "Past Medical History": {
+              "Hypertension": "Yes"
+            },
+            "Quality": {
+              "Chest pain burning": "No",
+              "Chest pain dull\\pressure\\squeezing": "No",
+              "Chest pain sharp\\stabbing": "Yes"
+            },
+            "Timing\\Onset": {
+              "Chest pain lasting 1-3 hours": "Yes",
+              "Chest pain lasting a few seconds": "No",
+              "Chest pain lasting greater than 24 hours": "No",
+              "Chest pain lasting less than 20-30 minutes": "No",
+              "Sudden onset of pain?": "Yes"
+            },
+            "Vital Signs": {
+              "Fever": "No",
+              "Tachycardia": "Yes",
+              "Tachypnea": "Yes"
+            }
+          }
+        }
+      ],
+      "Diagnoses": [
+        "Myocardial Infarction",
+        "Angina Pectoris",
+        "Thoracic Aortic Aneurysm",
+        "Pericarditis",
+        "Upper GI",
+        "Pneumonia",
+        "Pneumothorax",
+        "Musculoskeletal",
+        "Pulmonary Embolism"
+      ]
+    }
+  },
+  "Tests Taken": {
+    "chest": [
+      "Patient comes to the clinic complaining of chest pain",
+      {
+        "CaseStartTime": "1682305832365",
+        "Clicks": {
+          "1682305837907": "Chest pain lasting 1-3 hours",
+          "1682305838426": "Chest pain lasting a few seconds",
+          "1682305838960": "Chest pain lasting greater than 24 hours",
+          "1682305840343": "Chest pain burning",
+          "1682305840973": "Chest pain dull\\pressure\\squeezing",
+          "1682305856427": "Location of chest pain posterior thoracic",
+          "1682305856825": "Location of chest pain lateral to costochondral junction",
+          "1682305857236": "Location of chest pain at sternochondral or costochondral junction",
+          "1682305857805": "Location of chest pain substernal and\\pr left precordial",
+          "1682305858204": "Radiation of chest pain to back",
+          "1682305858779": "Radiation of chest pain to neck\\jaw\\arm"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Somewhat",
+          "Primary": "Thoracic Aortic Aneurysm",
+          "Secondary": "Pneumonia",
+          "Tertiary": "Upper GI",
+          "Timestamp": "1682305863064"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Somewhat Not",
+          "Primary": "Thoracic Aortic Aneurysm",
+          "Secondary": "Pneumonia",
+          "Tertiary": "Upper GI",
+          "Timestamp": "1682305852869"
+        }
+      },
+      {
+        "CaseStartTime": "1682305863072",
+        "Clicks": {
+          "1682305837907": "Chest pain lasting 1-3 hours",
+          "1682305838426": "Chest pain lasting a few seconds",
+          "1682305838960": "Chest pain lasting greater than 24 hours",
+          "1682305840343": "Chest pain burning",
+          "1682305840973": "Chest pain dull\\pressure\\squeezing",
+          "1682305856427": "Location of chest pain posterior thoracic",
+          "1682305856825": "Location of chest pain lateral to costochondral junction",
+          "1682305857236": "Location of chest pain at sternochondral or costochondral junction",
+          "1682305857805": "Location of chest pain substernal and\\pr left precordial",
+          "1682305858204": "Radiation of chest pain to back",
+          "1682305858779": "Radiation of chest pain to neck\\jaw\\arm",
+          "1682305885709": "Chest pain burning",
+          "1682305886460": "Chest pain dull\\pressure\\squeezing",
+          "1682305886867": "Chest pain sharp\\stabbing",
+          "1682305887391": "Chest pain altered by exertion",
+          "1682305887851": "Chest pain altered by food",
+          "1682305899437": "Location of chest pain lateral to costochondral junction",
+          "1682305899948": "Location of chest pain posterior thoracic"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Very",
+          "Primary": "Pneumonia",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Musculoskeletal",
+          "Timestamp": "1682305902628"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Very",
+          "Primary": "Pneumonia",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Musculoskeletal",
+          "Timestamp": "1682305897219"
+        }
+      }
+    ],
+    "chest-1": [
+      "Patient comes to the clinic complaining of chest pain",
+      {
+        "CaseStartTime": "1682721078891",
+        "Clicks": {
+          "1682721128314": "Chest pain dull\\pressure\\squeezing",
+          "1682721150909": "Radiation of chest pain to back",
+          "1682721179842": "Preceding trauma",
+          "1682721185536": "Diaphoresis",
+          "1682721194474": "Chest pain altered by food",
+          "1682721269496": "Chest pain burning",
+          "1682721270031": "Chest pain sharp\\stabbing",
+          "1682721277788": "Chest pain altered by exertion",
+          "1682721286463": "Chest pain lasting greater than 24 hours",
+          "1682721350544": "Chest pain lasting 1-3 hours",
+          "1682721382523": "Location of chest pain substernal and\\or left precordial"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Very",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Pulmonary Embolism",
+          "Tertiary": "Angina Pectoris",
+          "Timestamp": "1682721411920"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Somewhat",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Pulmonary Embolism",
+          "Timestamp": "1682721245941"
+        }
+      },
+      {
+        "CaseStartTime": "1682721411926",
+        "Clicks": {
+          "1682721128314": "Chest pain dull\\pressure\\squeezing",
+          "1682721150909": "Radiation of chest pain to back",
+          "1682721179842": "Preceding trauma",
+          "1682721185536": "Diaphoresis",
+          "1682721194474": "Chest pain altered by food",
+          "1682721269496": "Chest pain burning",
+          "1682721270031": "Chest pain sharp\\stabbing",
+          "1682721277788": "Chest pain altered by exertion",
+          "1682721286463": "Chest pain lasting greater than 24 hours",
+          "1682721350544": "Chest pain lasting 1-3 hours",
+          "1682721382523": "Location of chest pain substernal and\\or left precordial",
+          "1682721415894": "Chest pain lasting a few seconds",
+          "1682721416405": "Chest pain sharp\\stabbing",
+          "1682721416921": "Chest pain dull\\pressure\\squeezing",
+          "1682721417237": "Chest pain burning",
+          "1682721418104": "Chest pain altered by exertion",
+          "1682721429766": "Location of chest pain lateral to costochondral junction"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pericarditis",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Pneumonia",
+          "Timestamp": "1682721433901"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pericarditis",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Pneumonia",
+          "Timestamp": "1682721429072"
+        }
+      }
+    ],
+    "chest-10": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-11": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-12": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-13": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-14": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-15": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-16": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-17": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-18": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-19": [
+      "Patient comes to the clinic complaining of chest pain",
+      {
+        "CaseStartTime": "1682597779413",
+        "Clicks": {
+          "1682598014206": "Chest pain lasting 1-3 hours",
+          "1682598018687": "Chest pain dull\\pressure\\squeezing",
+          "1682598023650": "Location of chest pain lateral to costochondral junction",
+          "1682598074518": "Radiation of chest pain to back",
+          "1682598075894": "Radiation of chest pain to neck\\jaw\\arm",
+          "1682598147271": "Chest pain altered by food",
+          "1682598149361": "Chest pain altered by exertion",
+          "1682598156613": "Prodromal flue-like signs\\symptoms, excluding fever",
+          "1682598160361": "Sudden dyspnea",
+          "1682598164461": "Diaphoresis",
+          "1682598170022": "Patient reports pain occurs with specific movement\\posture",
+          "1682598173440": "Skin cool\\pale\\moist",
+          "1682598175797": "Tachycardia",
+          "1682598176716": "Tachypnea",
+          "1682598178517": "Fever",
+          "1682598189887": "Precordial friction rubs"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Thoracic Aortic Aneurysm",
+          "Timestamp": "1682598214513"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pericarditis",
+          "Secondary": "Myocardial Infarction",
+          "Tertiary": "Upper GI",
+          "Timestamp": "1682598139319"
+        }
+      },
+      {
+        "CaseStartTime": "1682598214518",
+        "Clicks": {
+          "1682598014206": "Chest pain lasting 1-3 hours",
+          "1682598018687": "Chest pain dull\\pressure\\squeezing",
+          "1682598023650": "Location of chest pain lateral to costochondral junction",
+          "1682598074518": "Radiation of chest pain to back",
+          "1682598075894": "Radiation of chest pain to neck\\jaw\\arm",
+          "1682598147271": "Chest pain altered by food",
+          "1682598149361": "Chest pain altered by exertion",
+          "1682598156613": "Prodromal flue-like signs\\symptoms, excluding fever",
+          "1682598160361": "Sudden dyspnea",
+          "1682598164461": "Diaphoresis",
+          "1682598170022": "Patient reports pain occurs with specific movement\\posture",
+          "1682598173440": "Skin cool\\pale\\moist",
+          "1682598175797": "Tachycardia",
+          "1682598176716": "Tachypnea",
+          "1682598178517": "Fever",
+          "1682598189887": "Precordial friction rubs",
+          "1682598225694": "Chest pain lasting 1-3 hours",
+          "1682598232379": "Chest pain dull\\pressure\\squeezing",
+          "1682598234242": "Chest pain sharp\\stabbing",
+          "1682598238042": "Radiation of chest pain to back",
+          "1682598242517": "Radiation of chest pain to neck\\jaw\\arm",
+          "1682598261097": "Location of chest pain posterior thoracic",
+          "1682598262175": "Location of chest pain at sternochondral or costochondral junction",
+          "1682598263993": "Location of chest pain lateral to costochondral junction",
+          "1682598270898": "Chest pain altered by exertion",
+          "1682598275362": "Prodromal flue-like signs\\symptoms, excluding fever",
+          "1682598276492": "Recent immobility",
+          "1682598282037": "Chest pain altered by food",
+          "1682598284432": "Dysphagia",
+          "1682598286855": "Patient reports pain occurs with specific movement\\posture",
+          "1682598291117": "Fever",
+          "1682598292762": "Tachycardia",
+          "1682598293724": "Tachypnea",
+          "1682598307821": "Aortic regurgitant murmur",
+          "1682598342076": "Neck vein distention",
+          "1682598343448": "Deep vein thrombosis",
+          "1682598358085": "Unilateral hyperresonance",
+          "1682598358618": "Unilateral decreased breath sounds",
+          "1682598361977": "Skin cool\\pale\\moist",
+          "1682598387875": "Precordial friction rubs",
+          "1682598388723": "S3\\S4 gallops",
+          "1682598391155": "Accentuated pulmonic second sound",
+          "1682598433866": "Patient reproduced pain with specific movement during exam",
+          "1682598435634": "Physicians' palpation reproduced point tenderness",
+          "1682598437485": "Productive cough",
+          "1682598441035": "Wheezes",
+          "1682598441915": "Evidence of soft tissue trauma"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pulmonary Embolism",
+          "Secondary": "Thoracic Aortic Aneurysm",
+          "Tertiary": "Angina Pectoris",
+          "Timestamp": "1682598471562"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pericarditis",
+          "Secondary": "Thoracic Aortic Aneurysm",
+          "Tertiary": "Angina Pectoris",
+          "Timestamp": "1682598254401"
+        }
+      }
+    ],
+    "chest-2": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-20": [
+      "Patient comes to the clinic complaining of chest pain",
+      {
+        "CaseStartTime": "1682557804519",
+        "Clicks": {
+          "1682557823484": "Chest pain burning",
+          "1682557826466": "Chest pain dull\\pressure\\squeezing",
+          "1682557828099": "Chest pain lasting 1-3 hours",
+          "1682557828714": "Chest pain lasting a few seconds",
+          "1682557829332": "Chest pain lasting greater than 24 hours",
+          "1682557864113": "Chest pain altered by exertion",
+          "1682557864464": "Chest pain altered by food",
+          "1682557864792": "Diaphoresis",
+          "1682557865106": "Dysphagia",
+          "1682557865601": "Location of chest pain posterior thoracic",
+          "1682557865956": "Location of chest pain substernal and\\pr left precordial",
+          "1682557866355": "Radiation of chest pain to back"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Angina Pectoris",
+          "Secondary": "Myocardial Infarction",
+          "Tertiary": "Pneumothorax",
+          "Timestamp": "1682557877690"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Pericarditis",
+          "Tertiary": "Pneumothorax",
+          "Timestamp": "1682557862731"
+        }
+      },
+      {
+        "CaseStartTime": "1682557877693",
+        "Clicks": {
+          "1682557823484": "Chest pain burning",
+          "1682557826466": "Chest pain dull\\pressure\\squeezing",
+          "1682557828099": "Chest pain lasting 1-3 hours",
+          "1682557828714": "Chest pain lasting a few seconds",
+          "1682557829332": "Chest pain lasting greater than 24 hours",
+          "1682557864113": "Chest pain altered by exertion",
+          "1682557864464": "Chest pain altered by food",
+          "1682557864792": "Diaphoresis",
+          "1682557865106": "Dysphagia",
+          "1682557865601": "Location of chest pain posterior thoracic",
+          "1682557865956": "Location of chest pain substernal and\\pr left precordial",
+          "1682557866355": "Radiation of chest pain to back",
+          "1682557884543": "Chest pain dull\\pressure\\squeezing",
+          "1682557886327": "Chest pain sharp\\stabbing",
+          "1682557887511": "Chest pain lasting 1-3 hours",
+          "1682557887803": "Chest pain lasting a few seconds",
+          "1682557888081": "Chest pain lasting greater than 24 hours",
+          "1682557898191": "Location of chest pain at sternochondral or costochondral junction",
+          "1682557898494": "Location of chest pain lateral to costochondral junction",
+          "1682557898879": "Location of chest pain posterior thoracic",
+          "1682557899287": "Location of chest pain substernal and\\pr left precordial"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pulmonary Embolism",
+          "Secondary": "Myocardial Infarction",
+          "Tertiary": "Pericarditis",
+          "Timestamp": "1682557907320"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Musculoskeletal",
+          "Secondary": "Myocardial Infarction",
+          "Tertiary": "Pericarditis",
+          "Timestamp": "1682557896674"
+        }
+      }
+    ],
+    "chest-3": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-4": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-5": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-6": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-7": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-8": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest-9": [
+      "Patient comes to the clinic complaining of chest pain"
+    ],
+    "chest2": [
+      "Patient comes to the clinic complaining of chest pain",
+      {
+        "CaseStartTime": "1682452809316",
+        "Clicks": {
+          "1682452811463": "Chest pain lasting 1-3 hours",
+          "1682452812092": "Chest pain burning",
+          "1682452813144": "Chest pain altered by exertion",
+          "1682452813634": "Chest pain altered by food",
+          "1682452814170": "Diaphoresis",
+          "1682452864066": "Chest pain lasting a few seconds",
+          "1682452864647": "Chest pain lasting greater than 24 hours",
+          "1682452865840": "Chest pain sharp\\stabbing",
+          "1682452867385": "Chest pain dull\\pressure\\squeezing"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Somewhat",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Thoracic Aortic Aneurysm",
+          "Timestamp": "1682452880094"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Somewhat Not",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Thoracic Aortic Aneurysm",
+          "Timestamp": "1682452861369"
+        }
+      },
+      {
+        "CaseStartTime": "1682452880102",
+        "Clicks": {
+          "1682452811463": "Chest pain lasting 1-3 hours",
+          "1682452812092": "Chest pain burning",
+          "1682452813144": "Chest pain altered by exertion",
+          "1682452813634": "Chest pain altered by food",
+          "1682452814170": "Diaphoresis",
+          "1682452864066": "Chest pain lasting a few seconds",
+          "1682452864647": "Chest pain lasting greater than 24 hours",
+          "1682452865840": "Chest pain sharp\\stabbing",
+          "1682452867385": "Chest pain dull\\pressure\\squeezing",
+          "1682452882413": "Chest pain lasting 1-3 hours",
+          "1682452883807": "Diaphoresis",
+          "1682452884239": "Gradual dyspnea",
+          "1682452885091": "Patient reports pain occurs with specific movement\\posture",
+          "1682452887012": "Dysphagia",
+          "1682452906725": "Chest pain burning",
+          "1682452907235": "Chest pain dull\\pressure\\squeezing",
+          "1682452908193": "Chest pain sharp\\stabbing"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Somewhat",
+          "Primary": "Pulmonary Embolism",
+          "Secondary": "Pericarditis",
+          "Tertiary": "Thoracic Aortic Aneurysm",
+          "Timestamp": "1682452917862"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Somewhat Not",
+          "Primary": "Pulmonary Embolism",
+          "Secondary": "Pericarditis",
+          "Tertiary": "Thoracic Aortic Aneurysm",
+          "Timestamp": "1682452905717"
+        }
+      }
+    ],
+    "chest3": [
+      "Patient comes to the clinic complaining of chest pain",
+      {
+        "CaseStartTime": "1682455193186",
+        "Clicks": {
+          "1682455219588": "Chest pain burning",
+          "1682455220607": "Chest pain lasting a few seconds",
+          "1682455221789": "Chest pain dull\\pressure\\squeezing",
+          "1682455223523": "Radiation of chest pain to back",
+          "1682455224837": "Chest pain altered by food",
+          "1682455248002": "Location of chest pain posterior thoracic",
+          "1682455249705": "Sudden dyspnea",
+          "1682455250711": "Productive cough",
+          "1682455251166": "Physicians' palpation reproduced point tenderness",
+          "1682455251635": "Patient reproduced pain with specific movement during exam",
+          "1682455252272": "Hemoptysis"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Neutral",
+          "Primary": "Angina Pectoris",
+          "Secondary": "Myocardial Infarction",
+          "Tertiary": "Pneumonia",
+          "Timestamp": "1682455260736"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Neutral",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Pericarditis",
+          "Timestamp": "1682455245531"
+        }
+      },
+      {
+        "CaseStartTime": "1682455260742",
+        "Clicks": {
+          "1682455219588": "Chest pain burning",
+          "1682455220607": "Chest pain lasting a few seconds",
+          "1682455221789": "Chest pain dull\\pressure\\squeezing",
+          "1682455223523": "Radiation of chest pain to back",
+          "1682455224837": "Chest pain altered by food",
+          "1682455248002": "Location of chest pain posterior thoracic",
+          "1682455249705": "Sudden dyspnea",
+          "1682455250711": "Productive cough",
+          "1682455251166": "Physicians' palpation reproduced point tenderness",
+          "1682455251635": "Patient reproduced pain with specific movement during exam",
+          "1682455252272": "Hemoptysis",
+          "1682455262903": "Sudden onset of pain?",
+          "1682455263882": "Chest pain sharp\\stabbing",
+          "1682455264572": "Chest pain lasting a few seconds",
+          "1682455265249": "Hypertension",
+          "1682455265951": "Chest pain lasting 1-3 hours",
+          "1682455277320": "Location of chest pain at sternochondral or costochondral junction",
+          "1682455277686": "Location of chest pain lateral to costochondral junction",
+          "1682455278070": "Location of chest pain posterior thoracic",
+          "1682455278594": "Location of chest pain substernal and\\pr left precordial"
+        },
+        "FinalDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Myocardial Infarction",
+          "Secondary": "Angina Pectoris",
+          "Tertiary": "Upper GI",
+          "Timestamp": "1682455298467"
+        },
+        "WorkingDiagnosis": {
+          "Confidence": "Not At All",
+          "Primary": "Pulmonary Embolism",
+          "Secondary": "Upper GI",
+          "Tertiary": "Pneumothorax",
+          "Timestamp": "1682455275622"
+        }
+      }
+    ],
+    "ggwDt50582": [
+      "Patient comes to the clinic complaining of chest pain"
+    ]
+  }
+}

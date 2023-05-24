@@ -18,7 +18,7 @@ export const Home = () => {
     const [gender, setGender] = useState("");
     const [caseNum, setCaseNum] = useState("");
     const [complaint, setComplaint] = useState("");
-    const [caseStartTime, setCaseStartTime] = useRecoilState(caseStartTimeAtom);
+    const setCaseStartTime = useSetRecoilState(caseStartTimeAtom);
     const workingDiagnosisDone = useRecoilValue(workingDiagnosisDoneAtom);
     const loggedIn = useRecoilValue(loggedInAtom);
     const setDoneWithStudy = useSetRecoilState(doneWithStudyAtom);
@@ -26,7 +26,6 @@ export const Home = () => {
 
 
     const getCase = (caseNum) => {
-        // console.log(caseNum);
         setCaseStartTime(Date.now().toString());
         get(child(ref(database), `Complaints/${complaint}`)).then((snapshot) => {
             if (snapshot.exists()) {
@@ -47,7 +46,6 @@ export const Home = () => {
                         data: groupQuestionsData
                     });
                 }
-                // console.log(newQuestions);
                 setQuestions(newQuestions);
 
                 // Get the diagnoses data and put it into the correct format
@@ -73,7 +71,7 @@ export const Home = () => {
             const complaintRef = child(ref(database), `Tests Taken/${loggedIn}`);
             get(complaintRef).then((snapshot) => {
                 if (snapshot.exists()) {
-                    console.log(snapshot.val()["0"]);
+                    // console.log(snapshot.val()["0"]);
                     setComplaint(snapshot.val()["0"]);
                 } else {
                     console.log("No data available");

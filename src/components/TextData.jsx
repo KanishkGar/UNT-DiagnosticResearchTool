@@ -1,6 +1,6 @@
 import { Button, HStack, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { clickCounterAtom, workingDiagnosisDoneAtom, clicksDataAtom, questionsAtom } from "../atoms";
 import {
     Modal,
@@ -8,7 +8,6 @@ import {
     ModalContent,
     ModalHeader,
     ModalFooter,
-    ModalBody,
     ModalCloseButton,
     useDisclosure
 } from '@chakra-ui/react'
@@ -16,15 +15,15 @@ import {
 export const TextData = (props) => {
     const [show, setShow] = useState(props.data.showing);
     const [clickCounter, setClickCounter] = useRecoilState(clickCounterAtom);
-    const [workingDiagnosisDone, setWorkingDiagnosisDone] = useRecoilState(workingDiagnosisDoneAtom);
-    const [clicksData, setClicksData] = useRecoilState(clicksDataAtom);
+    const workingDiagnosisDone = useRecoilValue(workingDiagnosisDoneAtom);
+    const setClicksData = useSetRecoilState(clicksDataAtom);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const questions = useRecoilValue(questionsAtom)
 
     
 
     const onTextClick = () => {
-        if (clickCounter == 5 && !workingDiagnosisDone) {
+        if (clickCounter === 5 && !workingDiagnosisDone) {
             onOpen();
             return;
         }
@@ -57,7 +56,7 @@ export const TextData = (props) => {
         </Modal>
         <HStack my={2}>
             <Button disabled={show} onClick={onTextClick}>{props.data.title}</Button>
-            {show && <Text backgroundColor={props.data.data == "Yes" ? '#00FF00' : "#FF0000"} p={2} borderRadius={10}>{props.data.data}</Text>}
+            {show && <Text backgroundColor={props.data.data === "Yes" ? '#00FF00' : "#FF0000"} p={2} borderRadius={10}>{props.data.data}</Text>}
         </HStack>
 
         <div></div>
